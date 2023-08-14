@@ -33,6 +33,23 @@
     //클래스 생성자내부에 보호하려고 하는 property값을 getter, setter러 구현해놓은 해당 인스턴스 객체를 캡술화 가능
     tab1.tab = 'abc'
     console.log(tab1)
+
+    //Symbol : ES6 이후에 새로 나온 자료형
+    //Symbol 은 자체적으로 Symbol타입의 객체를 만들어서 스 안에 매번 고유한 문자값을 담아주는 자료형
+    const secret = Symbol()
+    const secret2 = Symbol()
+    console.log(secret === secret2)
+
+    //계속해서 고유문자값으로 Symbol의 리턴값을 객체의 property의 변수로 치환하면
+    //외부에서 해당객체의 property에 접근하려고 할때 key값을 알 수가 없으므로 객체의 특정 property값을 캡술화
+    const DB = {
+      [secret]: '1234'
+    }
+    //심볼로 특정 프로퍼티 키값을 숨겼다고 하더라도 치환되고 있는 프로퍼티의 변수명을 알고 있으면 연관배열형태로 접근가능 (Symbol의 캡슐화 맹점)
+    //대안: getter, setter, private
+    DB[secret] = '3333'
+    //DB.secret = '3333'
+    console.log(DB)
   </script>
 </body>
 
