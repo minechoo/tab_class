@@ -23,7 +23,15 @@
     </article>
   </section>
   <script>
-    new Tab('#tab');
+    const tab1 = new Tab('#tab');
+    console.log(tab1)
+    tab1.bindingEvent()
+    //tab1이라는 인스턴스 객체의 tab프러퍼티 값을 외부에서 특정값을 담아서 젼경하려고 시도하면
+    //자동으로 set 프러퍼티 접근자 실행되면서 들어오는 값을 비교해서 원하는 값을 변경이 되고
+    //해당 프러퍼티를 읽을때 자동으로 get 프러퍼티 접근자가 실행디면서 우리가 변경해놓은 값으로 읽히게 됨
+    //클래스 생성자내부에 보호하려고 하는 property값을 getter, setter러 구현해놓은 해당 인스턴스 객체를 캡술화 가능
+    tab1.tab = 'abc'
+    console.log(tab1)
   </script>
 </body>
 

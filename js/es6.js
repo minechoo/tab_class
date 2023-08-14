@@ -1,3 +1,8 @@
+/*property 접근자
+get : 프러퍼티의 key에 접근할때 자동으로 호출되는 접근자
+set : ㅍ러퍼티에 value에 값이 담길때 자동으로 호출되는 접근자
+*/
+
 class Tab {
 	constructor(selector, option) {
 		//defaults, results값은 굳이 인스턴스 객체에 전달할 필요가 없으므로
@@ -11,7 +16,16 @@ class Tab {
 		this.tab = document.querySelector(selector);
 		this.btns = this.tab.querySelectorAll(result.btns);
 		this.boxs = this.tab.querySelectorAll(result.boxs);
-		this.bindingEvent();
+		//this.bindingEvent();
+	}
+
+	//tab이라는 property key에 접근하는 순간 호출되는 방식
+	get tab() {
+		return this.value;
+	}
+	//tab이라는 property value 값을 담으려는 순간 호출되는 함수
+	set tab(value) {
+		this.value = value.tagName === 'SECTION' ? value : document.querySelector('#tab');
 	}
 
 	bindingEvent() {
